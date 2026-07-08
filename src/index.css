@@ -54,10 +54,6 @@ body {
   margin: 0;
 }
 
-html, body, #root {
-  overflow-y: auto;
-}
-
 #root {
   width: 1126px;
   max-width: 100%;

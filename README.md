@@ -1,28 +1,5 @@
-# React + Vite
+# My personal website
 
-This project uses React with Vite and the official React plugin for fast refresh.
+## Why I needed AI to fix my oopsies
 
-## Available Scripts
-
-In the project root, you can run:
-
-```bash
-npm install
-npm run dev
-```
-
-### `npm run dev`
-
-Runs the app in development mode.
-
-### `npm run build`
-
-Builds the app for production.
-
-### `npm run preview`
-
-Locally previews the production build.
-
-## Expanding ESLint
-
-If you are building a production application, we recommend enabling type-aware lint rules and updating the ESLint configuration to match your project needs.
+I created the files in a folder and i wanted them out on the main level :pf:

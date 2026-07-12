@@ -11,7 +11,7 @@ function App() {
     <main className="homepage">
       <div className="center-content">
         <h1>Welcome to Zook's Website</h1>
-        <p>Keeping it simple. Just a clean cyan background and some text.</p>
+        <p></p>
       </div>
     </main>
   )

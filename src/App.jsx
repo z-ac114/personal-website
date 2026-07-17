@@ -85,7 +85,19 @@ function App() {
         .replace(/sqrt\(65\)/g, 'Math.sqrt(65)')
         .replace(/sqrt\(82\)/g, 'Math.sqrt(82)')
 
-      setDisplay(String(Function('return ' + evalStr)()))
+      const rawResult = Function('return ' + evalStr)()
+      
+      if (typeof rawResult === 'number' && !isNaN(rawResult)) {
+        if (Number.isInteger(rawResult)) {
+          setDisplay(String(rawResult).slice(0, 8))
+        } else {
+          let formatted = rawResult.toPrecision(8)
+          formatted = parseFloat(formatted).toString()
+          setDisplay(formatted.slice(0, 8))
+        }
+      } else {
+        setDisplay(String(rawResult))
+      }
     } catch {
       setDisplay('Error')
     }
@@ -112,9 +124,9 @@ function App() {
   }
 
   return (
-    <main className="homepage">
-      <section className="Main webpage">
-        <div className="center-content">
+    <div className="page">
+      <main className="page-main homepage">
+        <section className="center-content">
           <h1>My website :D</h1>
           <p>maybe not for now</p>
           
@@ -131,41 +143,40 @@ function App() {
             </div>
             {nameMessage && <p className="name-message">{nameMessage}</p>}
           </form>
-          
-        </div>
-      </section>
-      
-      <section 
-        className={`calculator ${isSliding ? 'slide-animation' : ''} ${isCandy ? 'candy-expanded' : ''}`}
-        style={{ '--slide-duration': `${duration}s` }}
-      >
-        <h2>Calculator.. or is it..</h2>
-        <div className="calculator-display">{display}</div>
-        <div className="calculator-buttons">
-          <button onClick={() => appendValue(digitMap[7])}>{digitMap[7]}</button>
-          <button onClick={() => appendValue(digitMap[8])}>{digitMap[8]}</button>
-          <button onClick={() => appendValue(digitMap[9])}>{digitMap[9]}</button>
-          <button onClick={() => appendValue('+')}>+</button><br />
-          <button onClick={() => appendValue(digitMap[4])}>{digitMap[4]}</button>
-          <button onClick={() => appendValue(digitMap[5])}>{digitMap[5]}</button>
-          <button onClick={() => appendValue(digitMap[6])}>{digitMap[6]}</button>
-          <button onClick={() => appendValue('-')}>-</button><br />
-          <button onClick={() => appendValue(digitMap[1])}>{digitMap[1]}</button>
-          <button onClick={() => appendValue(digitMap[2])}>{digitMap[2]}</button>
-          <button onClick={() => appendValue(digitMap[3])}>{digitMap[3]}</button>
-          <button onClick={() => appendValue('*')}>*</button><br />
-          <button onClick={() => appendValue(digitMap[0])}>{digitMap[0]}</button>
-          <button onClick={calculateResult}>=</button>
-          <button onClick={clearDisplay}>C</button>
-          <button onClick={() => appendValue('/')}>/</button>
-        </div>
-      </section>
-      
-      <section className="button">
-        <button onClick={() => playAudio(sliding)}>{buttonText}</button>
-        <button className="hidden-reset-btn" onClick={resetSliding}>reset</button>
-      </section>
-    </main>
+        </section>
+        
+        <section 
+          className={`calculator ${isSliding ? 'slide-animation' : ''} ${isCandy ? 'candy-expanded' : ''}`}
+          style={{ '--slide-duration': `${duration}s` }}
+        >
+          <h2>Calculator.. or is it..</h2>
+          <div className="calculator-display">{display}</div>
+          <div className="calculator-buttons">
+            <button onClick={() => appendValue(digitMap[7])}>{digitMap[7]}</button>
+            <button onClick={() => appendValue(digitMap[8])}>{digitMap[8]}</button>
+            <button onClick={() => appendValue(digitMap[9])}>{digitMap[9]}</button>
+            <button onClick={() => appendValue('+')}>+</button>
+            <button onClick={() => appendValue(digitMap[4])}>{digitMap[4]}</button>
+            <button onClick={() => appendValue(digitMap[5])}>{digitMap[5]}</button>
+            <button onClick={() => appendValue(digitMap[6])}>{digitMap[6]}</button>
+            <button onClick={() => appendValue('-')}>-</button>
+            <button onClick={() => appendValue(digitMap[1])}>{digitMap[1]}</button>
+            <button onClick={() => appendValue(digitMap[2])}>{digitMap[2]}</button>
+            <button onClick={() => appendValue(digitMap[3])}>{digitMap[3]}</button>
+            <button onClick={() => appendValue('*')}>*</button>
+            <button onClick={() => appendValue(digitMap[0])}>{digitMap[0]}</button>
+            <button onClick={calculateResult}>=</button>
+            <button onClick={clearDisplay}>C</button>
+            <button onClick={() => appendValue('/')}>/</button>
+          </div>
+        </section>
+        
+        <section className="button">
+          <button onClick={() => playAudio(sliding)}>{buttonText}</button>
+          <button className="hidden-reset-btn" onClick={resetSliding}>reset</button>
+        </section>
+      </main>
+    </div>
   )
 }
 

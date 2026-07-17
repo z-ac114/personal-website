@@ -18,13 +18,12 @@
 
 html, body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   overscroll-behavior-y: none;
   overflow-x: hidden;
 }
 
 body {
-  padding: 20px;
   font-family: var(--font-family);
   line-height: 1.6;
   background: linear-gradient(-45deg, #1b3465, #0d47a1, #00b4db, #149c83, #00b4db, #0d47a1, #1b3465);
@@ -33,15 +32,16 @@ body {
   animation: forwardDiagonal 30s linear infinite alternate;
   color: var(--text-primary);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .page {
-  min-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
 }
 
 .page-main {
@@ -49,17 +49,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  flex: 1 0 auto;
+  width: 100%;
 }
 
 .homepage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: 1200px;
-  padding: 2rem;
 }
 
 h1, h2, h3, p, li, .bottom-text {
@@ -373,4 +369,5 @@ a, a:visited, a:hover, a:active {
   font-size: 0.75rem !important;
   padding: 0.75rem 0.25rem;
 }
+
 /* im sorry im just learning from youtube tutorials + gemini this is an absolute mess */

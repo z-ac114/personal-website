@@ -7,7 +7,7 @@ const sliding = new Audio(slidingSound)
 function App() {
   const [display, setDisplay] = useState('0')
   const [isSliding, setIsSliding] = useState(false)
-  const [buttonText, setButtonText] = useState('Play something hmm')
+  const [buttonText, setButtonText] = useState('Maybe click this?')
   const [duration, setDuration] = useState(8)
   
   const [nameInput, setNameInput] = useState('')

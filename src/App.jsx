@@ -7,6 +7,7 @@ const sliding = new Audio(slidingSound)
 function App() {
   const [display, setDisplay] = useState(0)
   const [isSliding, setIsSliding] = useState(false)
+  const [buttonText, setButtonText] = useState('Play something hmm')
   const [duration, setDuration] = useState(4)
 
   const appendValue = (value) => {
@@ -30,14 +31,16 @@ function App() {
   }
   
   const playAudio = (audioFile) => {
-    audioFile.currentTime = 0 
-    audioFile.play().catch(err => console.log("Audio play blocked: ", err))
-    
     if (!isSliding) {
+      audioFile.currentTime = 0 
+      audioFile.play().catch(err => console.log("Audio play blocked: ", err))
       setIsSliding(true)
+      
+      setTimeout(() => {
+        setButtonText('press button to stop sliding')
+      }, 1000)
     } else {
-      // If already sliding, make it go faster (decrease duration)
-      setDuration(prevDuration => Math.max(0.15, prevDuration * 0.5))
+      setDuration(prevDuration => Math.max(0.25, prevDuration * 0.5))
     }
   }
 
@@ -49,8 +52,6 @@ function App() {
           <p>maybe not for now</p>
         </div>
       </section>
-      
-      {/* Passing the dynamic duration down to CSS as a custom property */}
       <section 
         className={`calculator ${isSliding ? 'slide-animation' : ''}`}
         style={{ '--slide-duration': `${duration}s` }}
@@ -77,10 +78,7 @@ function App() {
         </div>
       </section>
       <section className="button">
-        {/* Dynamic button text */}
-        <button onClick={() => playAudio(sliding)}>
-          {isSliding ? 'press button to stop sliding' : 'Play something hmm'}
-        </button>
+        <button onClick={() => playAudio(sliding)}>{buttonText}</button>
       </section>
     </main>
   )

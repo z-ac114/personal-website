@@ -12,7 +12,7 @@ function App() {
   
   const [nameInput, setNameInput] = useState('')
   const [nameMessage, setNameMessage] = useState('')
-  const [isCandy, setIsCandy] = useState(false)
+  const [isColorMode, setIsColorMode] = useState(false)
 
   const [digitMap, setDigitMap] = useState({
     0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
@@ -20,7 +20,7 @@ function App() {
   })
 
   useEffect(() => {
-    const baseDigits = isCandy 
+    const baseDigits = isColorMode 
       ? ['0', 'sqrt(2)', 'e', 'pi', 'sqrt(17)', 'sqrt(26)', 'tau', 'sqrt(50)', 'sqrt(65)', 'sqrt(82)']
       : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -42,20 +42,20 @@ function App() {
 
     const interval = setInterval(scramble, 1000)
     return () => clearInterval(interval)
-  }, [isCandy, isSliding])
+  }, [isColorMode, isSliding])
 
   const handleNameSubmit = (e) => {
     e.preventDefault()
     const val = nameInput.trim()
     
-    if (val.toLowerCase() === 'candy') {
-      setIsCandy(true)
+    if (val.toLowerCase().includes('a')) {
+      setIsColorMode(true)
       setNameMessage('nice! goog luck...')
     } else if (val !== '') {
-      setIsCandy(false)
+      setIsColorMode(false)
       setNameMessage('really? i guess then.')
     } else {
-      setIsCandy(false)
+      setIsColorMode(false)
       setNameMessage('')
     }
   }
@@ -76,7 +76,7 @@ function App() {
     try {
       let formatStr = display
 
-      if (isCandy) {
+      if (isColorMode) {
         formatStr = formatStr
           .replace(/\)\s*(?=sqrt\()/g, ')*')
           .replace(/([0-9epi])\s*(?=sqrt\()/g, '$1*')
@@ -138,7 +138,7 @@ function App() {
   }
 
   return (
-    <div className={`page ${isCandy ? 'candy-mode' : ''}`}>
+    <div className={`page ${isColorMode ? 'color-mode' : ''}`}>
       <main className="page-main homepage">
         <section className="center-content">
           <h1>A calculator!</h1>
@@ -164,7 +164,7 @@ function App() {
         </section>
         
         <section 
-          className={`calculator ${isSliding ? 'slide-animation' : ''} ${isCandy ? 'candy-expanded' : ''}`}
+          className={`calculator ${isSliding ? 'slide-animation' : ''} ${isColorMode ? 'color-expanded' : ''}`}
           style={{ '--slide-duration': `${duration}s` }}
         >
           <h2>Calculator.. or is it..</h2>

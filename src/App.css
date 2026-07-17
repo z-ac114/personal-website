@@ -1,12 +1,4 @@
 :root {
-  --text-primary: #d2f3ff;
-  --text-muted: #9ca3af;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --btn-bg: #2d2d3a;
-  --btn-hover: #3e3e4f;
   --font-family: "Aldrich", sans-serif;
 }
 
@@ -14,7 +6,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  z-index: 0;
 }
 
 html, body {
@@ -25,15 +16,13 @@ html, body {
 
 body {
   font-family: var(--font-family);
-  line-height: 1.6;
   background: linear-gradient(-45deg, #1b3465, #0d47a1, #00b4db, #149c83, #00b4db, #0d47a1, #1b3465);
   background-size: 400% 400%;
   background-attachment: fixed; 
   animation: forwardDiagonal 30s linear infinite alternate;
-  color: var(--text-primary);
 }
 
-body:has(.page.candy-mode) {
+body:has(.page.color-mode) {
   background: linear-gradient(
     -45deg, 
     #ffb3ba, 
@@ -58,338 +47,27 @@ body:has(.page.candy-mode) {
   overflow-y: auto;
 }
 
-.page.candy-mode {
+.page.color-mode {
   background: transparent;
-}
-
-.page.candy-mode h1,
-.page.candy-mode h2,
-.page.candy-mode h3,
-.page.candy-mode p,
-.page.candy-mode li,
-.page.candy-mode .bottom-text {
-  color: #4a2840; 
-}
-
-.page.candy-mode .name-input {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(74, 40, 64, 0.15);
-  color: #4a2840;
-}
-
-.page.candy-mode .name-input::placeholder {
-  color: rgba(74, 40, 64, 0.5);
-}
-
-.page.candy-mode .name-input:focus {
-  border-color: #ff85a2;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.page.candy-mode .submit-btn,
-.page.candy-mode .button button:not(.hidden-reset-btn) {
-  background-color: #ff85a2; 
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 10px rgba(255, 133, 162, 0.3);
-}
-
-.page.candy-mode .submit-btn:hover,
-.page.candy-mode .button button:not(.hidden-reset-btn):hover {
-  background-color: #f77090;
-}
-
-.page.candy-mode .calculator {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 20px 35px -5px rgba(255, 133, 162, 0.2), 
-              0 10px 15px -5px rgba(186, 225, 255, 0.2);
-}
-
-.page.candy-mode .calculator h2 {
-  color: #8c6a85;
-}
-
-.page.candy-mode .calculator-display {
-  background: rgba(255, 255, 255, 0.7);
-  color: #4a2840;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.page.candy-mode .calculator-buttons button {
-  background-color: #ffffff;
-  color: #4a2840;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-}
-
-.page.candy-mode .calculator-buttons button:hover {
-  background-color: #fdf2f4;
-  color: #e04d70;
-}
-
-.page.candy-mode .calculator-buttons button:nth-of-type(4),
-.page.candy-mode .calculator-buttons button:nth-of-type(8),
-.page.candy-mode .calculator-buttons button:nth-of-type(12),
-.page.candy-mode .calculator-buttons button:nth-of-type(16) {
-  background-color: #e1f5fe;
-  color: #0288d1;
-}
-
-.page.candy-mode .calculator-buttons button:nth-of-type(1),
-.page.candy-mode .calculator-buttons button:nth-of-type(7),
-.page.candy-mode .calculator-buttons button:nth-of-type(14) {
-  background-color: #f3e5f5;
-  color: #8e24aa;
-}
-
-.page.candy-mode .calculator-buttons button:nth-of-type(1):hover,
-.page.candy-mode .calculator-buttons button:nth-of-type(7):hover,
-.page.candy-mode .calculator-buttons button:nth-of-type(14):hover {
-  background-color: #8e24aa;
-  color: #fff;
-}
-
-.page.candy-mode .calculator-buttons button:nth-of-type(15) {
-  background-color: #ffebee;
-  color: #c62828;
-}
-
-.page.candy-mode .calculator-buttons button:nth-of-type(15):hover {
-  background-color: #c62828;
-  color: #fff;
-}
-
-.page.candy-mode .button .hidden-reset-btn {
-  color: rgba(74, 40, 64, 0.2);
-  border: 1px solid rgba(74, 40, 64, 0.15);
-  background-color: transparent;
-  opacity: 0.35;
-}
-
-.page.candy-mode .button .hidden-reset-btn:hover {
-  opacity: 0.75;
-  color: rgba(74, 40, 64, 0.9);
-  border-color: rgba(74, 40, 64, 0.4);
-  background-color: rgba(74, 40, 64, 0.05);
 }
 
 .page-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
-}
-
-.homepage {
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 1200px;
-}
-
-h1, h2, h3, p, li, .bottom-text {
-  color: var(--text-primary);
-  text-align: center;
-}
-
-h1 {
-  font-size: 70px;
-}
-
-.center-content h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-h2 {
-  font-size: 40px;
-}
-
-p {
-  margin-bottom: 20px;
-}
-
-li {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.bottom-text {
-  margin-top: auto;
-  padding: 1rem 0;
-}
-
-a, a:visited, a:hover, a:active {
-  color: inherit;
-}
-
-.music-list,
-.changelog-list {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
-.semi-transparent {
-  opacity: 0.1;
 }
 
 .calculator {
   position: relative;
   z-index: 1000000;        
-  background-color: #1e1e24;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 1.75rem;
   width: 100%;
   max-width: 360px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
-              0 10px 10px -5px rgba(0, 0, 0, 0.2);
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease; 
 }
 
 .calculator.candy-expanded {
   max-width: 460px;
-}
-
-.calculator h2 {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-  text-align: center;
-  letter-spacing: 0.05em;
-}
-
-.calculator-display {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: right;
-  word-wrap: break-word;
-  word-break: break-all;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  color: #fff;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-  margin-bottom: 1.5rem;
-}
-
-.calculator-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-}
-
-.calculator-buttons br {
-  display: none;
-}
-
-.calculator-buttons button,
-.button button {
-  font-family: var(--font-family);
-  font-size: 1.25rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 14px;
-  padding: 1rem 0;
-  background-color: var(--btn-bg);
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.calculator-buttons button:hover,
-.button button:hover {
-  background-color: var(--btn-hover);
-  transform: translateY(-2px);
-}
-
-.calculator-buttons button:active,
-.button button:active {
-  transform: translateY(1px);
-}
-
-.calculator-buttons button:nth-of-type(1),
-.calculator-buttons button:nth-of-type(7),
-.calculator-buttons button:nth-of-type(14) {
-  background-color: rgba(99, 102, 241, 0.15);
-  color: #818cf8;
-}
-
-.calculator-buttons button:nth-of-type(1):hover,
-.calculator-buttons button:nth-of-type(7):hover,
-.calculator-buttons button:nth-of-type(14):hover {
-  background-color: var(--accent);
-  color: #fff;
-}
-
-.calculator-buttons button:nth-of-type(15) {
-  background-color: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-}
-
-.calculator-buttons button:nth-of-type(15):hover {
-  background-color: var(--danger);
-  color: #fff;
-}
-
-.calculator-buttons button:nth-of-type(4),
-.calculator-buttons button:nth-of-type(8),
-.calculator-buttons button:nth-of-type(12),
-.calculator-buttons button:nth-of-type(16) {
-  background-color: #2d2d3a;
-  color: var(--text-muted);
-}
-
-.button {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.button button {
-  padding: 1rem 2.5rem; 
-}
-
-.button .hidden-reset-btn {
-  padding: 0.4rem 1.2rem; 
-  margin-top: 12px;
-  
-  font-size: 0.65rem;
-  letter-spacing: 0.05em;
-  text-transform: lowercase;
-  
-  background-color: transparent; 
-  color: rgba(210, 243, 255, 0.04);
-  border: 1px solid rgba(210, 243, 255, 0.05);
-  border-radius: 8px;
-  box-shadow: none;
-  
-  opacity: 0.05;
-  cursor: pointer;
-  transition: opacity 0.15s ease, border-color 0.15s ease;
-}
-
-.button .hidden-reset-btn:hover {
-  opacity: 0.35;
-  background-color: rgba(210, 243, 255, 0.02);
-  color: rgba(210, 243, 255, 0.5);
-  border-color: rgba(210, 243, 255, 0.2);
 }
 
 .calculator.slide-animation {
@@ -424,82 +102,4 @@ a, a:visited, a:hover, a:active {
   100% {
     background-position: 100% 100%;
   }
-}
-
-.name-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  min-height: 80px;
-}
-
-.input-group {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.name-input {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
-  color: var(--text-primary);
-  font-family: var(--font-family);
-  font-size: 1rem;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  width: 280px; 
-}
-
-.name-input:focus {
-  border-color: var(--accent);
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.submit-btn {
-  font-family: var(--font-family);
-  font-size: 1rem;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 0.75rem 1.25rem;
-  background-color: var(--accent);
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.submit-btn:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.submit-btn:active {
-  transform: translateY(1px);
-}
-
-.name-message {
-  margin-top: 0.75rem;
-  font-size: 1rem;
-  color: #a855f7;
-  font-weight: 600;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.calculator-buttons button {
-  font-size: 1rem !important; 
-}
-
-.calculator.candy-expanded .calculator-buttons button {
-  font-size: 0.75rem !important;
-  padding: 0.75rem 0.25rem;
 }

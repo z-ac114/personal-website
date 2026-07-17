@@ -176,7 +176,6 @@ a, a:visited, a:hover, a:active {
   color: #fff;
   cursor: pointer;
   transition: all 0.15s ease;
-  user-select: none;
 }
 
 .calculator-buttons button:hover,
@@ -254,7 +253,7 @@ a, a:visited, a:hover, a:active {
 }
 
 .calculator.slide-animation {
-  animation: slideOutIn var(--slide-duration, 4s) linear 1s infinite;
+  animation: slideOutIn var(--slide-duration, 8s) linear 1s infinite;
 }
 
 @keyframes slideOutIn {

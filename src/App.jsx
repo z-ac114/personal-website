@@ -8,7 +8,7 @@ function App() {
   const [display, setDisplay] = useState('0')
   const [isSliding, setIsSliding] = useState(false)
   const [buttonText, setButtonText] = useState('Play something hmm')
-  const [duration, setDuration] = useState(4)
+  const [duration, setDuration] = useState(8)
 
   const [digitMap, setDigitMap] = useState({
     0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
@@ -111,7 +111,7 @@ function App() {
       </section>
       <section className="button">
         <button onClick={() => playAudio(sliding)}>{buttonText}</button>
-        <button className="hidden-reset-btn" onClick={resetSliding}></button>
+        <button className="hidden-reset-btn" onClick={resetSliding}>Super Hidden Stop Button</button>
       </section>
     </main>
   )

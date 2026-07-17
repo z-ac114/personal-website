@@ -227,13 +227,13 @@ body {
 }
 
 .calculator-buttons button[onClick*="clearDisplay"],
-.calculator-buttons button:nth-child(16) {
+.calculator-buttons button:nth-child(19) {
   background-color: rgba(239, 68, 68, 0.15);
   color: #f87171;
 }
 
 .calculator-buttons button[onClick*="clearDisplay"]:hover,
-.calculator-buttons button:nth-child(16):hover {
+.calculator-buttons button:nth-child(19):hover {
   background-color: var(--danger);
   color: #fff;
 }

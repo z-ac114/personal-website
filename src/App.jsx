@@ -54,6 +54,9 @@ function App() {
           <button onClick={() => appendValue('/')}>/</button>
         </div>
         </section>
+        <section className="button">
+          <button onClick={() => playAudio('sliding.mp3')}>Play Audio</button>
+        </section>
     </main>
   )
 }

@@ -1,3 +1,21 @@
+:root {
+  --text-primary: #d2f3ff;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --btn-bg: #2d2d3a;
+  --btn-hover: #3e3e4f;
+  --font-family: "Aldrich", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -5,20 +23,24 @@ html, body {
 }
 
 body {
-  margin: 0;
   padding: 20px;
-  font-family: "Aldrich", sans-serif;
+  font-family: var(--font-family);
   line-height: 1.6;
   background: linear-gradient(-45deg, #1b3465, #0d47a1, #00b4db, #149c83, #00b4db, #0d47a1, #1b3465);
   background-size: 400% 400%;
   background-attachment: fixed; 
   animation: forwardDiagonal 30s linear infinite alternate;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page {
   min-height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .page-main {
@@ -29,13 +51,33 @@ body {
   flex: 1 0 auto;
 }
 
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
 h1, h2, h3, p, li, .bottom-text {
-  color: #d2f3ff;
+  color: var(--text-primary);
   text-align: center;
 }
 
 h1 {
   font-size: 70px;
+}
+
+.center-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 h2 {
@@ -60,79 +102,12 @@ a, a:visited, a:hover, a:active {
   color: inherit;
 }
 
-.music-list,
-.changelog-list {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
 .semi-transparent {
   opacity: 0.1;
 }
 
-@keyframes forwardDiagonal {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-:root {
-  --bg-primary: #121214;
-  --bg-card: #1e1e24;
-  --text-primary: #f3f4f6;
-  --text-muted: #9ca3af;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --success: #10b981;
-  --success-hover: #059669;
-  --btn-bg: #2d2d3a;
-  --btn-hover: #3e3e4f;
-  --font-family: "Aldrich", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-family);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.homepage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  padding: 2rem;
-}
-
-.center-content h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
 .calculator {
-  background-color: var(--bg-card);
+  background-color: #1e1e24;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   padding: 1.75rem;
@@ -188,7 +163,7 @@ body {
   border-radius: 14px;
   padding: 1rem 0;
   background-color: var(--btn-bg);
-  color: var(--text-primary);
+  color: #fff;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -202,6 +177,8 @@ body {
   transform: translateY(1px);
 }
 
+/* --- Styled Key Buttons --- */
+/* Blue Buttons (7, 6, and =) */
 .calculator-buttons button:nth-of-type(1),
 .calculator-buttons button:nth-of-type(7),
 .calculator-buttons button:nth-of-type(14) {
@@ -229,10 +206,36 @@ body {
 .calculator-buttons button:nth-of-type(4),
 .calculator-buttons button:nth-of-type(8),
 .calculator-buttons button:nth-of-type(12),
-.calculator-buttons button:nth-of-type(16),
-.button {
+.calculator-buttons button:nth-of-type(16) {
   background-color: #2d2d3a;
   color: var(--text-muted);
 }
 
-/* im sorry im just learning from youtube tutorials + gemini this is an absolute messs
+.button button {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--btn-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.button button:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+@keyframes forwardDiagonal {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* im sorry im just learning from youtube tutorials + gemini this is an absolute mess */

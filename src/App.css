@@ -97,12 +97,11 @@ body:has(.page.color-mode) {
   gap: 0.75rem;
 }
 
-.text {
-  font-size: 20px;
+h2,h1,p, .text {
   color: white;
 }
 
-.text.color-mode, h1.color-mode, h2.color-mode, p.color-mode {
+.page.color-mode h2, h1, p, .text {
   color: black;
 }
 

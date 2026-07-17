@@ -36,21 +36,20 @@ function App() {
         <div className="calculator-display">{display}</div>
         <div className="calculator-buttons">
           <button onClick={clearDisplay}>C</button>
-          <button onClick={() => appendValue('/')}>/</button>
-          <button onClick={() => appendValue('*')}>*</button>
-          <button onClick={() => appendValue('-')}>-</button>
           <button onClick={() => appendValue('7')}>7</button>
           <button onClick={() => appendValue('8')}>8</button>
           <button onClick={() => appendValue('9')}>9</button>
-          <button onClick={() => appendValue('+')}>+</button>
+          <button onClick={() => appendValue('+')}>+</button><br />
           <button onClick={() => appendValue('4')}>4</button>
           <button onClick={() => appendValue('5')}>5</button>
           <button onClick={() => appendValue('6')}>6</button>
-          <button onClick={calculateResult}>=</button>
+          <button onClick={() => appendValue('-')}>-</button><br />
           <button onClick={() => appendValue('1')}>1</button>
           <button onClick={() => appendValue('2')}>2</button>
           <button onClick={() => appendValue('3')}>3</button>
+          <button onClick={() => appendValue('*')}>*</button><br />
           <button onClick={() => appendValue('0')}>0</button>
+          <button onClick={() => appendValue('/')}>/</button>
         </div>
         </section>
     </main>

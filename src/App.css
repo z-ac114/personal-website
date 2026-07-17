@@ -234,22 +234,29 @@ a, a:visited, a:hover, a:active {
 }
 
 .button .hidden-reset-btn {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border: 1px dashed rgba(255, 255, 255, 0.3) !important;
-  border-radius: 4px;
-  width: 60px;
-  height: 6px;
-  padding: 0 !important;
+  padding: 0.4rem 1.2rem; 
   margin-top: 12px;
+  
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  
+  background-color: transparent; 
+  color: rgba(210, 243, 255, 0.04);
+  border: 1px solid rgba(210, 243, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: none;
+  
   opacity: 0.05;
-  cursor: pointer !important;
-  transform: none !important;
-  outline: none;
-  transition: opacity 0.15s ease;
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
 }
 
 .button .hidden-reset-btn:hover {
-  opacity: 0.3;
+  opacity: 0.35;
+  background-color: rgba(210, 243, 255, 0.02);
+  color: rgba(210, 243, 255, 0.5);
+  border-color: rgba(210, 243, 255, 0.2);
 }
 
 .calculator.slide-animation {

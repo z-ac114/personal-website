@@ -35,7 +35,6 @@ function App() {
         <h2>Calculator.. or is it..</h2>
         <div className="calculator-display">{display}</div>
         <div className="calculator-buttons">
-          <button onClick={clearDisplay}>C</button>
           <button onClick={() => appendValue('7')}>7</button>
           <button onClick={() => appendValue('8')}>8</button>
           <button onClick={() => appendValue('9')}>9</button>
@@ -49,6 +48,8 @@ function App() {
           <button onClick={() => appendValue('3')}>3</button>
           <button onClick={() => appendValue('*')}>*</button><br />
           <button onClick={() => appendValue('0')}>0</button>
+          <button onClick={calculateResult}>=</button>
+          <button onClick={clearDisplay}>C</button>
           <button onClick={() => appendValue('/')}>/</button>
         </div>
         </section>

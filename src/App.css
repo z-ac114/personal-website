@@ -78,3 +78,35 @@ a, a:visited, a:hover, a:active {
     background-position: 100% 100%;
   }
 }
+
+:root {
+  --bg-primary: #121214;
+  --bg-card: #1e1e24;
+  --text-primary: #f3f4f6;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #10b981;
+  --success-hover: #059669;
+  --btn-bg: #2d2d3a;
+  --btn-hover: #3e3e4f;
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

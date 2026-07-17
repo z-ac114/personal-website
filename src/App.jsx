@@ -128,6 +128,7 @@ function App() {
       setTimeout(() => setButtonText('press button to stop sliding'), 1000)
     } else {
       setDuration(prev => Math.max(0.15, prev * 0.5))
+      setButtonText('sliding faster... too bad it doesnt stop-')
     }
   }
 

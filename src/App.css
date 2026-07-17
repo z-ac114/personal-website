@@ -267,15 +267,15 @@ a, a:visited, a:hover, a:active {
   0% {
     transform: translateX(0);
   }
-  49.9% {
+  79.9% {
     transform: translateX(100vw);
     opacity: 1;
   }
-  50% {
+  80% {
     transform: translateX(-100vw);
     opacity: 0;
   }
-  50.1% {
+  80.1% {
     transform: translateX(-100vw);
     opacity: 1;
   }

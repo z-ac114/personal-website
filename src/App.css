@@ -225,3 +225,14 @@ body {
   background-color: var(--danger);
   color: #fff;
 }
+
+.calculator-buttons button:nth-of-type(4),
+.calculator-buttons button:nth-of-type(8),
+.calculator-buttons button:nth-of-type(12),
+.calculator-buttons button:nth-of-type(16),
+.button {
+  background-color: #2d2d3a;
+  color: var(--text-muted);
+}
+
+/* im sorry im just learning from youtube tutorials + gemini this is an absolute messs

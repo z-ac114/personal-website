@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './App.css'
+import slidingSound from './assets/sliding.mp3'
+
+const sliding = new Audio(slidingSound)
 
 function App() {
   const [display, setDisplay] = useState(0)
@@ -24,10 +27,9 @@ function App() {
     }
   }
   
-  let sliding = new Audio('sliding.mp3')
-
   const playAudio = (audioFile) => {
-    sliding.play()
+    audioFile.currentTime = 0 // Allows you to click rapidly and re-trigger the sound immediately
+    audioFile.play().catch(err => console.log("Audio play blocked: ", err))
   }
 
   return (
@@ -59,10 +61,10 @@ function App() {
           <button onClick={clearDisplay}>C</button>
           <button onClick={() => appendValue('/')}>/</button>
         </div>
-        </section>
-        <section className="button">
-          <button onClick={() => playAudio('sliding.mp3')}>Play Audio</button>
-        </section>
+      </section>
+      <section className="button">
+        <button onClick={() => playAudio(sliding)}>Play something hmm</button>
+      </section>
     </main>
   )
 }

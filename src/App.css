@@ -20,6 +20,7 @@
 html, body {
   width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -33,6 +34,21 @@ body {
   transition: background 0.8s ease, color 0.8s ease;
 }
 
+body:has(.page.candy-mode) {
+  background: linear-gradient(
+    -45deg, 
+    #ffb3ba, 
+    #ffdfba, 
+    #ffffba, 
+    #baffc9, 
+    #bae1ff, 
+    #e8baff, 
+    #ffb3ba
+  );
+  background-size: 400% 400%;
+  animation: forwardDiagonal 15s linear infinite alternate;
+}
+
 .page {
   min-height: 100vh;
   width: 100%;
@@ -44,20 +60,8 @@ body {
   transition: background 0.8s ease;
 }
 
-
 .page.candy-mode {
-  background: linear-gradient(
-    -45deg, 
-    #ffb3ba, 
-    #ffdfba, 
-    #ffffba,
-    #baffc9,
-    #bae1ff,
-    #e8baff,
-    #ffb3ba
-  );
-  background-size: 400% 400%;
-  animation: forwardDiagonal 15s linear infinite alternate;
+  background: transparent;
 }
 
 .page.candy-mode h1,
@@ -83,7 +87,6 @@ body {
   border-color: #ff85a2;
   background: rgba(255, 255, 255, 0.9);
 }
-
 
 .page.candy-mode .submit-btn,
 .page.candy-mode .button button:not(.hidden-reset-btn) {
@@ -137,7 +140,6 @@ body {
   color: #0288d1;
 }
 
-
 .page.candy-mode .calculator-buttons button:nth-of-type(1),
 .page.candy-mode .calculator-buttons button:nth-of-type(7),
 .page.candy-mode .calculator-buttons button:nth-of-type(14) {
@@ -160,6 +162,20 @@ body {
 .page.candy-mode .calculator-buttons button:nth-of-type(15):hover {
   background-color: #c62828;
   color: #fff;
+}
+
+.page.candy-mode .button .hidden-reset-btn {
+  color: rgba(74, 40, 64, 0.2);
+  border: 1px solid rgba(74, 40, 64, 0.15);
+  background-color: transparent;
+  opacity: 0.35;
+}
+
+.page.candy-mode .button .hidden-reset-btn:hover {
+  opacity: 0.75;
+  color: rgba(74, 40, 64, 0.9);
+  border-color: rgba(74, 40, 64, 0.4);
+  background-color: rgba(74, 40, 64, 0.05);
 }
 
 .page-main {

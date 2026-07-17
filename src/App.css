@@ -264,7 +264,7 @@ a, a:visited, a:hover, a:active {
   0% {
     transform: translateX(0);
   }
-  49.999999% {
+  49.99% {
     transform: translateX(100vw);
     opacity: 1;
   }
@@ -272,7 +272,7 @@ a, a:visited, a:hover, a:active {
     transform: translateX(-100vw);
     opacity: 0;
   }
-  50.000001% {
+  50.01% {
     transform: translateX(-100vw);
     opacity: 1;
   }
@@ -316,7 +316,7 @@ a, a:visited, a:hover, a:active {
   text-align: center;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
-  width: 280px; /* Expanded slightly to give your text entry extra breathing room */
+  width: 280px;
 }
 
 .name-input:focus {

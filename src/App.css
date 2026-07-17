@@ -19,8 +19,7 @@
 html, body {
   width: 100%;
   min-height: 100%;
-  overscroll-behavior-y: none;
-  overflow-x: hidden;
+  /* Removed overscroll-behavior-y restriction to allow natural scrolling */
 }
 
 body {
@@ -31,8 +30,6 @@ body {
   background-attachment: fixed; 
   animation: forwardDiagonal 30s linear infinite alternate;
   color: var(--text-primary);
-  display: flex;
-  flex-direction: column;
 }
 
 .page {
@@ -42,6 +39,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
+  overflow-y: auto; /* Explicitly allow vertical scrolling if contents run long */
 }
 
 .page-main {
@@ -318,7 +316,7 @@ a, a:visited, a:hover, a:active {
   text-align: center;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
-  width: 200px;
+  width: 280px; /* Expanded slightly to give your text entry extra breathing room */
 }
 
 .name-input:focus {

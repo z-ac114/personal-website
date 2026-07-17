@@ -31,7 +31,6 @@ body {
   background-attachment: fixed; 
   animation: forwardDiagonal 30s linear infinite alternate;
   color: var(--text-primary);
-  transition: background 0.8s ease, color 0.8s ease;
 }
 
 body:has(.page.candy-mode) {
@@ -57,7 +56,6 @@ body:has(.page.candy-mode) {
   align-items: flex-start;
   padding: 40px 20px;
   overflow-y: auto;
-  transition: background 0.8s ease;
 }
 
 .page.candy-mode {
@@ -195,7 +193,6 @@ body:has(.page.candy-mode) {
 h1, h2, h3, p, li, .bottom-text {
   color: var(--text-primary);
   text-align: center;
-  transition: color 0.8s ease;
 }
 
 h1 {
@@ -255,7 +252,7 @@ a, a:visited, a:hover, a:active {
   max-width: 360px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
               0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease, background-color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease; 
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease; 
 }
 
 .calculator.candy-expanded {
@@ -269,7 +266,6 @@ a, a:visited, a:hover, a:active {
   margin-bottom: 1.25rem;
   text-align: center;
   letter-spacing: 0.05em;
-  transition: color 0.8s ease;
 }
 
 .calculator-display {
@@ -289,7 +285,6 @@ a, a:visited, a:hover, a:active {
   color: #fff;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
   margin-bottom: 1.5rem;
-  transition: background 0.8s ease, color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
 }
 
 .calculator-buttons {
@@ -313,7 +308,7 @@ a, a:visited, a:hover, a:active {
   background-color: var(--btn-bg);
   color: #fff;
   cursor: pointer;
-  transition: all 0.15s ease, background-color 0.8s ease, color 0.8s ease;
+  transition: transform 0.15s ease;
 }
 
 .calculator-buttons button:hover,
@@ -456,7 +451,7 @@ a, a:visited, a:hover, a:active {
   font-size: 1rem;
   text-align: center;
   outline: none;
-  transition: border-color 0.2s, background 0.2s, color 0.8s;
+  transition: border-color 0.2s, background 0.2s;
   width: 280px; 
 }
 
@@ -475,7 +470,7 @@ a, a:visited, a:hover, a:active {
   background-color: var(--accent);
   color: #fff;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease;
 }
 
 .submit-btn:hover {
@@ -508,4 +503,3 @@ a, a:visited, a:hover, a:active {
   font-size: 0.75rem !important;
   padding: 0.75rem 0.25rem;
 }
-/* im sorry im just learning from youtube tutorials + gemini this is an absolute mess */

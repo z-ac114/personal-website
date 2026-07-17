@@ -1,5 +1,5 @@
-# My personal website
+# A calculator
 
-## Why I needed AI to fix my oopsies
+# What it does
 
-I created the files in a folder and i wanted them out on the main level :pf:
+uh calculates i guess.. also stays still and doesnt change colors or positions.. right?

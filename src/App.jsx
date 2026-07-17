@@ -141,8 +141,8 @@ function App() {
     <div className={`page ${isCandy ? 'candy-mode' : ''}`}>
       <main className="page-main homepage">
         <section className="center-content">
-          <h1>My website :D</h1>
-          <p>maybe not for now</p>
+          <h1>A calculator!</h1>
+          <p>Stays still forever..?</p>
           
           <form onSubmit={handleNameSubmit} className="name-section">
             <div className="input-group">

@@ -23,6 +23,12 @@ function App() {
       setDisplay('Error')
     }
   }
+  
+  let sliding = new Audio('sliding.mp3')
+
+  const playAudio = (audioFile) => {
+    sliding.play()
+  }
 
   return (
     <main className="homepage">

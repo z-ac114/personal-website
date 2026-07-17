@@ -191,7 +191,6 @@ body {
   color: var(--text-primary);
   cursor: pointer;
   transition: all 0.15s ease;
-  user-select: none;
 }
 
 .calculator-buttons button:hover {
@@ -203,37 +202,26 @@ body {
   transform: translateY(1px);
 }
 
-.calculator-buttons button:nth-child(4n),
-.calculator-buttons button:nth-child(17) {
+.calculator-buttons button:nth-of-type(1),
+.calculator-buttons button:nth-of-type(7),
+.calculator-buttons button:nth-of-type(14) {
   background-color: rgba(99, 102, 241, 0.15);
   color: #818cf8;
 }
 
-.calculator-buttons button:nth-child(4n):hover,
-.calculator-buttons button:nth-child(17):hover {
+.calculator-buttons button:nth-of-type(1):hover,
+.calculator-buttons button:nth-of-type(7):hover,
+.calculator-buttons button:nth-of-type(14):hover {
   background-color: var(--accent);
   color: #fff;
 }
 
-.calculator-buttons button[onClick*="calculateResult"],
-.calculator-buttons button:nth-child(15) { 
-  background-color: var(--success);
-  color: #fff;
-}
-
-.calculator-buttons button[onClick*="calculateResult"]:hover,
-.calculator-buttons button:nth-child(15):hover {
-  background-color: var(--success-hover);
-}
-
-.calculator-buttons button[onClick*="clearDisplay"],
-.calculator-buttons button:nth-child(19) {
+.calculator-buttons button:nth-of-type(15) {
   background-color: rgba(239, 68, 68, 0.15);
   color: #f87171;
 }
 
-.calculator-buttons button[onClick*="clearDisplay"]:hover,
-.calculator-buttons button:nth-child(19):hover {
+.calculator-buttons button:nth-of-type(15):hover {
   background-color: var(--danger);
   color: #fff;
 }

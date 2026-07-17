@@ -143,9 +143,9 @@ function App() {
         <section className="center-content">
           <h1>A calculator!</h1>
           {isSliding ? (
-            <p>i guess it moves... [Song name: Jamiroquai - Virtual Insanity]</p>
+            <p class="text">i guess it moves... [Song name: Jamiroquai - Virtual Insanity]</p>
           ) : (
-            <p>Stays still forever..?</p>
+            <p class="text">Stays still forever..?</p>
           )}
           
           <form onSubmit={handleNameSubmit} className="name-section">

@@ -29,6 +29,7 @@ function App() {
       <section className="Main webpage">
         <div className="center-content">
           <h1>My website :D</h1>
+          <p>maybe not for now</p>
         </div>
       </section>
       <section className="calculator">

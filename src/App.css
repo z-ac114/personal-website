@@ -130,3 +130,110 @@ body {
   margin-bottom: 0.5rem;
   text-align: center;
 }
+
+.calculator {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.calculator h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.calculator-display {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 1.5rem;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.calculator-buttons br {
+  display: none;
+}
+
+.calculator-buttons button {
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 0;
+  background-color: var(--btn-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.calculator-buttons button:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+.calculator-buttons button:active {
+  transform: translateY(1px);
+}
+
+.calculator-buttons button:nth-child(4n),
+.calculator-buttons button:nth-child(17) {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.calculator-buttons button:nth-child(4n):hover,
+.calculator-buttons button:nth-child(17):hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.calculator-buttons button[onClick*="calculateResult"],
+.calculator-buttons button:nth-child(15) { 
+  background-color: var(--success);
+  color: #fff;
+}
+
+.calculator-buttons button[onClick*="calculateResult"]:hover,
+.calculator-buttons button:nth-child(15):hover {
+  background-color: var(--success-hover);
+}
+
+.calculator-buttons button[onClick*="clearDisplay"],
+.calculator-buttons button:nth-child(16) {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.calculator-buttons button[onClick*="clearDisplay"]:hover,
+.calculator-buttons button:nth-child(16):hover {
+  background-color: var(--danger);
+  color: #fff;
+}

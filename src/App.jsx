@@ -44,14 +44,14 @@ function App() {
     return () => clearInterval(interval)
   }, [isCandy, isSliding])
 
-  const handleNameChange = (e) => {
-    const val = e.target.value
-    setNameInput(val)
+  const handleNameSubmit = (e) => {
+    e.preventDefault()
+    const val = nameInput.trim()
     
     if (val.toLowerCase() === 'candy') {
       setIsCandy(true)
       setNameMessage('nice! goog luck...')
-    } else if (val.trim() !== '') {
+    } else if (val !== '') {
       setIsCandy(false)
       setNameMessage('really? i guess then.')
     } else {
@@ -118,23 +118,25 @@ function App() {
           <h1>My website :D</h1>
           <p>maybe not for now</p>
           
-          {/* New Name Input Section */}
-          <div className="name-section">
-            <input 
-              type="text" 
-              placeholder="what's your name?" 
-              value={nameInput} 
-              onChange={handleNameChange} 
-              className="name-input"
-            />
+          <form onSubmit={handleNameSubmit} className="name-section">
+            <div className="input-group">
+              <input 
+                type="text" 
+                placeholder="what's your name?" 
+                value={nameInput} 
+                onChange={(e) => setNameInput(e.target.value)} 
+                className="name-input"
+              />
+              <button type="submit" className="submit-btn">Go</button>
+            </div>
             {nameMessage && <p className="name-message">{nameMessage}</p>}
-          </div>
+          </form>
           
         </div>
       </section>
       
       <section 
-        className={`calculator ${isSliding ? 'slide-animation' : ''}`}
+        className={`calculator ${isSliding ? 'slide-animation' : ''} ${isCandy ? 'candy-expanded' : ''}`}
         style={{ '--slide-duration': `${duration}s` }}
       >
         <h2>Calculator.. or is it..</h2>
@@ -158,6 +160,7 @@ function App() {
           <button onClick={() => appendValue('/')}>/</button>
         </div>
       </section>
+      
       <section className="button">
         <button onClick={() => playAudio(sliding)}>{buttonText}</button>
         <button className="hidden-reset-btn" onClick={resetSliding}>reset</button>

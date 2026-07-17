@@ -122,8 +122,11 @@ a, a:visited, a:hover, a:active {
   max-width: 360px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
               0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  /* Handles smooth slide-back animation when resetting */
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease; 
+}
+
+.calculator.candy-expanded {
+  max-width: 460px;
 }
 
 .calculator h2 {
@@ -260,10 +263,6 @@ a, a:visited, a:hover, a:active {
 }
 
 .calculator.slide-animation {
-  animation: slideOutIn var(--slide-duration, 8s) linear 1s infinite;
-}
-
-.calculator.slide-animation {
   animation: slidePerfect var(--slide-duration, 8s) linear 1s infinite;
 }
 
@@ -304,6 +303,13 @@ a, a:visited, a:hover, a:active {
   margin-top: 1rem;
   margin-bottom: 2rem;
   min-height: 80px;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
 
 .name-input {
   background: rgba(0, 0, 0, 0.2);
@@ -316,12 +322,34 @@ a, a:visited, a:hover, a:active {
   text-align: center;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
-  width: 250px;
+  width: 200px;
 }
 
 .name-input:focus {
   border-color: var(--accent);
   background: rgba(0, 0, 0, 0.4);
+}
+
+.submit-btn {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
 }
 
 .name-message {
@@ -330,8 +358,6 @@ a, a:visited, a:hover, a:active {
   color: #a855f7;
   font-weight: 600;
   animation: fadeIn 0.3s ease-in-out;
-}
-
 }
 
 @keyframes fadeIn {
@@ -343,4 +369,8 @@ a, a:visited, a:hover, a:active {
   font-size: 1rem !important; 
 }
 
+.calculator.candy-expanded .calculator-buttons button {
+  font-size: 0.75rem !important;
+  padding: 0.75rem 0.25rem;
+}
 /* im sorry im just learning from youtube tutorials + gemini this is an absolute mess */

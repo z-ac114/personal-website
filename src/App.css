@@ -66,7 +66,7 @@ body:has(.page.color-mode) {
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease; 
 }
 
-.calculator.candy-expanded {
+.calculator.color-expanded {
   max-width: 460px;
 }
 

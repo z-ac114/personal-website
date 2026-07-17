@@ -28,7 +28,7 @@ function App() {
     <main className="homepage">
       <section className="Main webpage">
         <div className="center-content">
-          <h1>Welcome to Zook's Website</h1>
+          <h1>My website :D</h1>
         </div>
       </section>
       <section className="calculator">

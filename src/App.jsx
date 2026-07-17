@@ -142,7 +142,11 @@ function App() {
       <main className="page-main homepage">
         <section className="center-content">
           <h1>A calculator!</h1>
-          <p>Stays still forever..?</p>
+          {isSliding ? (
+            <p>i guess it moves... [Song name: Jamiroquai - Virtual Insanity]</p>
+          ) : (
+            <p>Stays still forever..?</p>
+          )}
           
           <form onSubmit={handleNameSubmit} className="name-section">
             <div className="input-group">

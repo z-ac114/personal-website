@@ -271,7 +271,7 @@ a, a:visited, a:hover, a:active {
   0% {
     transform: translateX(0);
   }
-  49.99% {
+  49.999999% {
     transform: translateX(100vw);
     opacity: 1;
   }
@@ -279,7 +279,7 @@ a, a:visited, a:hover, a:active {
     transform: translateX(-100vw);
     opacity: 0;
   }
-  50.01% {
+  50.000001% {
     transform: translateX(-100vw);
     opacity: 1;
   }
@@ -297,4 +297,47 @@ a, a:visited, a:hover, a:active {
   }
 }
 
+.name-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  min-height: 80px;
+
+.name-input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 250px;
+}
+
+.name-input:focus {
+  border-color: var(--accent);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.name-message {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: #a855f7;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.calculator-buttons button {
+  font-size: 1rem !important; 
+}
 /* im sorry im just learning from youtube tutorials + gemini this is an absolute messs

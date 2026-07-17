@@ -9,6 +9,10 @@ function App() {
   const [isSliding, setIsSliding] = useState(false)
   const [buttonText, setButtonText] = useState('Play something hmm')
   const [duration, setDuration] = useState(8)
+  
+  const [nameInput, setNameInput] = useState('')
+  const [nameMessage, setNameMessage] = useState('')
+  const [isCandy, setIsCandy] = useState(false)
 
   const [digitMap, setDigitMap] = useState({
     0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
@@ -16,12 +20,20 @@ function App() {
   })
 
   useEffect(() => {
-    if (!isSliding) return
+    const baseDigits = isCandy 
+      ? ['0', 'sqrt(2)', 'e', 'pi', 'sqrt(17)', 'sqrt(26)', 'tau', 'sqrt(50)', 'sqrt(65)', 'sqrt(82)']
+      : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+    if (!isSliding) {
+      setDigitMap({
+        0: baseDigits[0], 1: baseDigits[1], 2: baseDigits[2], 3: baseDigits[3], 4: baseDigits[4],
+        5: baseDigits[5], 6: baseDigits[6], 7: baseDigits[7], 8: baseDigits[8], 9: baseDigits[9]
+      })
+      return
+    }
 
     const scramble = () => {
-      const originalDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-      const shuffled = [...originalDigits].sort(() => Math.random() - 0.5)
-      
+      const shuffled = [...baseDigits].sort(() => Math.random() - 0.5)
       setDigitMap({
         0: shuffled[0], 1: shuffled[1], 2: shuffled[2], 3: shuffled[3], 4: shuffled[4],
         5: shuffled[5], 6: shuffled[6], 7: shuffled[7], 8: shuffled[8], 9: shuffled[9]
@@ -30,10 +42,26 @@ function App() {
 
     const interval = setInterval(scramble, 1000)
     return () => clearInterval(interval)
-  }, [isSliding])
+  }, [isCandy, isSliding])
+
+  const handleNameChange = (e) => {
+    const val = e.target.value
+    setNameInput(val)
+    
+    if (val.toLowerCase() === 'candy') {
+      setIsCandy(true)
+      setNameMessage('nice! goog luck...')
+    } else if (val.trim() !== '') {
+      setIsCandy(false)
+      setNameMessage('really? i guess then.')
+    } else {
+      setIsCandy(false)
+      setNameMessage('')
+    }
+  }
 
   const appendValue = (value) => {
-    if (display === '0') {
+    if (display === '0' || display === 'Error') {
       setDisplay(value)
       return
     }
@@ -46,7 +74,18 @@ function App() {
 
   const calculateResult = () => {
     try {
-      setDisplay(String(Function('return ' + display)()))
+      const evalStr = display
+        .replace(/e/g, 'Math.E')
+        .replace(/pi/g, 'Math.PI')
+        .replace(/tau/g, '(Math.PI * 2)')
+        .replace(/sqrt\(2\)/g, 'Math.SQRT2')
+        .replace(/sqrt\(17\)/g, 'Math.sqrt(17)')
+        .replace(/sqrt\(26\)/g, 'Math.sqrt(26)')
+        .replace(/sqrt\(50\)/g, 'Math.sqrt(50)')
+        .replace(/sqrt\(65\)/g, 'Math.sqrt(65)')
+        .replace(/sqrt\(82\)/g, 'Math.sqrt(82)')
+
+      setDisplay(String(Function('return ' + evalStr)()))
     } catch {
       setDisplay('Error')
     }
@@ -68,12 +107,8 @@ function App() {
 
   const resetSliding = () => {
     setIsSliding(false)
-    setDuration(4)
+    setDuration(8)
     setButtonText('Play something hmm')
-    setDigitMap({
-      0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
-      5: '5', 6: '6', 7: '7', 8: '8', 9: '9'
-    })
   }
 
   return (
@@ -82,8 +117,22 @@ function App() {
         <div className="center-content">
           <h1>My website :D</h1>
           <p>maybe not for now</p>
+          
+          {/* New Name Input Section */}
+          <div className="name-section">
+            <input 
+              type="text" 
+              placeholder="what's your name?" 
+              value={nameInput} 
+              onChange={handleNameChange} 
+              className="name-input"
+            />
+            {nameMessage && <p className="name-message">{nameMessage}</p>}
+          </div>
+          
         </div>
       </section>
+      
       <section 
         className={`calculator ${isSliding ? 'slide-animation' : ''}`}
         style={{ '--slide-duration': `${duration}s` }}
@@ -111,7 +160,7 @@ function App() {
       </section>
       <section className="button">
         <button onClick={() => playAudio(sliding)}>{buttonText}</button>
-        <button className="hidden-reset-btn" onClick={resetSliding}>Super Hidden Stop Button</button>
+        <button className="hidden-reset-btn" onClick={resetSliding}>reset</button>
       </section>
     </main>
   )

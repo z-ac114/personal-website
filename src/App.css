@@ -64,6 +64,12 @@ body:has(.page.color-mode) {
   width: 100%;
   max-width: 360px;
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.5s ease; 
+  background: rgba(218, 212, 212, 0.895);
+  padding: 1rem;
+  border-radius: 4px;
+  gap: 0, 1rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .calculator.color-expanded {
@@ -83,7 +89,10 @@ body:has(.page.color-mode) {
   display: flex;
 }
 
+
+
 .calculator-buttons button {
+  font-family: var(--font-family);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -93,15 +102,34 @@ body:has(.page.color-mode) {
 
 .calculator-buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.25rem;
 }
 
-h2,h1,p, .text {
+.button button {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.5rem; 
+  cursor: pointer;
+}
+
+.button {
+  gap: 0.5rem, 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h2, h1, p, .calculator-display {
   color: white;
 }
 
-.page.color-mode h2, h1, p, .text {
+.page.color-mode h2, 
+.page.color-mode h1, 
+.page.color-mode p, 
+.page.color-mode .text, 
+.page.color-mode .calculator-display {
   color: black;
 }
 

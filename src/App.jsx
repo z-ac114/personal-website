@@ -68,16 +68,26 @@ function App() {
     setDisplay(display + value)
   }
 
-  const clearDisplay = () => {
-    setDisplay('0')
+  const clearDisplay = () => setDisplay('0')
+  const deleteLast = () => setDisplay(prev => prev.length > 1 ? prev.slice(0, -1) : '0')
+
+  const factorial = (n) => {
+    if (n < 0) return NaN
+    if (n === 0 || n === 1) return 1
+    let result = 1
+    for (let i = 2; i <= n; i++) result *= i
+    return result
   }
 
   const calculateResult = () => {
     try {
-      let formatStr = display
+      let evalStr = display
+        .replace(/\^/g, '**')
+        .replace(/log\(([^)]+)\)/g, 'Math.log10($1)')
+        .replace(/(\d+)!/g, (m, n) => factorial(parseInt(n)))
 
       if (isColorMode) {
-        formatStr = formatStr
+        evalStr = evalStr
           .replace(/\)\s*(?=sqrt\()/g, ')*')
           .replace(/([0-9epi])\s*(?=sqrt\()/g, '$1*')
           .replace(/(\))\s*(?=[0-9epias])/g, '$1*')
@@ -88,26 +98,19 @@ function App() {
           .replace(/(e|pi|tau)\s*(?=[0-9])/g, '$1*')
       }
 
-      const evalStr = formatStr
-        .replace(/e/g, 'Math.E')
-        .replace(/pi/g, 'Math.PI')
-        .replace(/tau/g, '(Math.PI * 2)')
-        .replace(/sqrt\(2\)/g, 'Math.SQRT2')
-        .replace(/sqrt\(17\)/g, 'Math.sqrt(17)')
-        .replace(/sqrt\(26\)/g, 'Math.sqrt(26)')
-        .replace(/sqrt\(50\)/g, 'Math.sqrt(50)')
-        .replace(/sqrt\(65\)/g, 'Math.sqrt(65)')
-        .replace(/sqrt\(82\)/g, 'Math.sqrt(82)')
+      evalStr = evalStr
+        .replace(/e/g, 'Math.E').replace(/pi/g, 'Math.PI').replace(/tau/g, '(Math.PI * 2)')
+        .replace(/sqrt\(2\)/g, 'Math.SQRT2').replace(/sqrt\(17\)/g, 'Math.sqrt(17)')
+        .replace(/sqrt\(26\)/g, 'Math.sqrt(26)').replace(/sqrt\(50\)/g, 'Math.sqrt(50)')
+        .replace(/sqrt\(65\)/g, 'Math.sqrt(65)').replace(/sqrt\(82\)/g, 'Math.sqrt(82)')
 
       const rawResult = Function('return ' + evalStr)()
-      
+
       if (typeof rawResult === 'number' && !isNaN(rawResult)) {
-        if (Number.isInteger(rawResult)) {
-          setDisplay(String(rawResult).slice(0, 8))
+        if (rawResult >= 1e8 || (rawResult > 0 && rawResult < 1e-4)) {
+          setDisplay(rawResult.toExponential(4))
         } else {
-          let formatted = rawResult.toPrecision(8)
-          formatted = parseFloat(formatted).toString()
-          setDisplay(formatted.slice(0, 8))
+          setDisplay(Number(rawResult.toPrecision(8)).toString())
         }
       } else {
         setDisplay(String(rawResult))
@@ -122,12 +125,9 @@ function App() {
       audioFile.currentTime = 0 
       audioFile.play().catch(err => console.log("Audio play blocked: ", err))
       setIsSliding(true)
-      
-      setTimeout(() => {
-        setButtonText('press button to stop sliding')
-      }, 1000)
+      setTimeout(() => setButtonText('press button to stop sliding'), 1000)
     } else {
-      setDuration(prevDuration => Math.max(0.15, prevDuration * 0.5))
+      setDuration(prev => Math.max(0.15, prev * 0.5))
     }
   }
 
@@ -142,31 +142,17 @@ function App() {
       <main className="page-main homepage">
         <section className="center-content">
           <h1>A calculator!</h1>
-          {isSliding ? (
-            <p class="text">i guess it moves... [Song name: Jamiroquai - Virtual Insanity]</p>
-          ) : (
-            <p class="text">Stays still forever..?</p>
-          )}
-          
+          <p className="text">{isSliding ? 'i guess it moves... [Song name: Jamiroquai - Virtual Insanity]' : 'Stays still forever..?'}</p>
           <form onSubmit={handleNameSubmit} className="name-section">
             <div className="input-group">
-              <input 
-                type="text" 
-                placeholder="what's your name?" 
-                value={nameInput} 
-                onChange={(e) => setNameInput(e.target.value)} 
-                className="name-input"
-              />
+              <input type="text" placeholder="what's your name?" value={nameInput} onChange={(e) => setNameInput(e.target.value)} className="name-input"/>
               <button type="submit" className="submit-btn">Go</button>
             </div>
             {nameMessage && <p className="name-message">{nameMessage}</p>}
           </form>
         </section>
         
-        <section 
-          className={`calculator ${isSliding ? 'slide-animation' : ''} ${isColorMode ? 'color-expanded' : ''}`}
-          style={{ '--slide-duration': `${duration}s` }}
-        >
+        <section className={`calculator ${isSliding ? 'slide-animation' : ''} ${isColorMode ? 'color-expanded' : ''}`} style={{ '--slide-duration': `${duration}s` }}>
           <h2>Calculator.. or is it..</h2>
           <div className="calculator-display">{display}</div>
           <div className="calculator-buttons">
@@ -174,21 +160,24 @@ function App() {
             <button onClick={() => appendValue(digitMap[8])}>{digitMap[8]}</button>
             <button onClick={() => appendValue(digitMap[9])}>{digitMap[9]}</button>
             <button onClick={() => appendValue('+')}>+</button>
+            <button onClick={deleteLast}>DEL</button>
             <button onClick={() => appendValue(digitMap[4])}>{digitMap[4]}</button>
             <button onClick={() => appendValue(digitMap[5])}>{digitMap[5]}</button>
             <button onClick={() => appendValue(digitMap[6])}>{digitMap[6]}</button>
             <button onClick={() => appendValue('-')}>-</button>
+            <button onClick={() => appendValue('^')}>^</button>
             <button onClick={() => appendValue(digitMap[1])}>{digitMap[1]}</button>
             <button onClick={() => appendValue(digitMap[2])}>{digitMap[2]}</button>
             <button onClick={() => appendValue(digitMap[3])}>{digitMap[3]}</button>
             <button onClick={() => appendValue('*')}>*</button>
+            <button onClick={() => appendValue('log(')}>log</button>
             <button onClick={() => appendValue(digitMap[0])}>{digitMap[0]}</button>
             <button onClick={calculateResult}>=</button>
             <button onClick={clearDisplay}>C</button>
             <button onClick={() => appendValue('/')}>/</button>
+            <button onClick={() => appendValue('!')}>!</button>
           </div>
         </section>
-        
         <section className="button">
           <button onClick={() => playAudio(sliding)}>{buttonText}</button>
           <button className="hidden-reset-btn" onClick={resetSliding}>reset</button>

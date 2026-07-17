@@ -74,7 +74,21 @@ function App() {
 
   const calculateResult = () => {
     try {
-      const evalStr = display
+      let formatStr = display
+
+      if (isCandy) {
+        formatStr = formatStr
+          .replace(/\)\s*(?=sqrt\()/g, ')*')
+          .replace(/([0-9epi])\s*(?=sqrt\()/g, '$1*')
+          .replace(/(\))\s*(?=[0-9epias])/g, '$1*')
+          .replace(/e\s*(?=pi|tau)/g, 'e*')
+          .replace(/pi\s*(?=e|tau)/g, 'pi*')
+          .replace(/tau\s*(?=e|pi)/g, 'tau*')
+          .replace(/([0-9])\s*(?=e|pi|tau)/g, '$1*')
+          .replace(/(e|pi|tau)\s*(?=[0-9])/g, '$1*')
+      }
+
+      const evalStr = formatStr
         .replace(/e/g, 'Math.E')
         .replace(/pi/g, 'Math.PI')
         .replace(/tau/g, '(Math.PI * 2)')

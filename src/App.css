@@ -19,7 +19,6 @@
 html, body {
   width: 100%;
   min-height: 100%;
-  /* Removed overscroll-behavior-y restriction to allow natural scrolling */
 }
 
 body {
@@ -39,7 +38,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
-  overflow-y: auto; /* Explicitly allow vertical scrolling if contents run long */
+  overflow-y: auto;
 }
 
 .page-main {
@@ -108,6 +107,8 @@ a, a:visited, a:hover, a:active {
 }
 
 .calculator {
+  position: relative; /* Setup stack context anchor */
+  z-index: 10;        /* Push above everything else */
   background-color: #1e1e24;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
@@ -264,7 +265,7 @@ a, a:visited, a:hover, a:active {
   0% {
     transform: translateX(0);
   }
-  49.99% {
+  49.999999% {
     transform: translateX(100vw);
     opacity: 1;
   }
@@ -272,7 +273,7 @@ a, a:visited, a:hover, a:active {
     transform: translateX(-100vw);
     opacity: 0;
   }
-  50.01% {
+  50.000001% {
     transform: translateX(-100vw);
     opacity: 1;
   }
@@ -316,7 +317,7 @@ a, a:visited, a:hover, a:active {
   text-align: center;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
-  width: 280px;
+  width: 280px; 
 }
 
 .name-input:focus {

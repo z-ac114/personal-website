@@ -102,6 +102,12 @@ a, a:visited, a:hover, a:active {
   color: inherit;
 }
 
+.music-list,
+.changelog-list {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
 .semi-transparent {
   opacity: 0.1;
 }
@@ -155,7 +161,8 @@ a, a:visited, a:hover, a:active {
   display: none;
 }
 
-.calculator-buttons button {
+.calculator-buttons button,
+.button button {
   font-family: var(--font-family);
   font-size: 1.25rem;
   font-weight: 600;
@@ -168,17 +175,17 @@ a, a:visited, a:hover, a:active {
   transition: all 0.15s ease;
 }
 
-.calculator-buttons button:hover {
+.calculator-buttons button:hover,
+.button button:hover {
   background-color: var(--btn-hover);
   transform: translateY(-2px);
 }
 
-.calculator-buttons button:active {
+.calculator-buttons button:active,
+.button button:active {
   transform: translateY(1px);
 }
 
-/* --- Styled Key Buttons --- */
-/* Blue Buttons (7, 6, and =) */
 .calculator-buttons button:nth-of-type(1),
 .calculator-buttons button:nth-of-type(7),
 .calculator-buttons button:nth-of-type(14) {
@@ -211,22 +218,15 @@ a, a:visited, a:hover, a:active {
   color: var(--text-muted);
 }
 
-.button button {
-  font-family: var(--font-family);
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--btn-bg);
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.button {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.button button:hover {
-  background-color: var(--btn-hover);
-  transform: translateY(-2px);
+.button button {
+  padding: 1rem 2.5rem; 
 }
 
 @keyframes forwardDiagonal {
@@ -238,4 +238,29 @@ a, a:visited, a:hover, a:active {
   }
 }
 
-/* im sorry im just learning from youtube tutorials + gemini this is an absolute mess */
+.calculator.slide-animation {
+  animation: slideOutIn 6s linear infinite;
+}
+
+@keyframes slideOutIn {
+  0% {
+    transform: translateX(0);
+  }
+  49.9% {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  50.1% {
+    transform: translateX(-100vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* im sorry im just learning from youtube tutorials + gemini this is an absolute messs

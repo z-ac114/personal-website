@@ -6,6 +6,7 @@ const sliding = new Audio(slidingSound)
 
 function App() {
   const [display, setDisplay] = useState(0)
+  const [isSliding, setIsSliding] = useState(false)
 
   const appendValue = (value) => {
     if (display === '0') {
@@ -28,8 +29,9 @@ function App() {
   }
   
   const playAudio = (audioFile) => {
-    audioFile.currentTime = 0 // Allows you to click rapidly and re-trigger the sound immediately
+    audioFile.currentTime = 0 
     audioFile.play().catch(err => console.log("Audio play blocked: ", err))
+    setIsSliding(true)
   }
 
   return (
@@ -40,7 +42,7 @@ function App() {
           <p>maybe not for now</p>
         </div>
       </section>
-      <section className="calculator">
+      <section className={`calculator ${isSliding ? 'slide-animation' : ''}`}>
         <h2>Calculator.. or is it..</h2>
         <div className="calculator-display">{display}</div>
         <div className="calculator-buttons">

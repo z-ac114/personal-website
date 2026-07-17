@@ -138,7 +138,7 @@ function App() {
   }
 
   return (
-    <div className="page">
+    <div className={`page ${isCandy ? 'candy-mode' : ''}`}>
       <main className="page-main homepage">
         <section className="center-content">
           <h1>My website :D</h1>

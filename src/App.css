@@ -239,7 +239,7 @@ a, a:visited, a:hover, a:active {
 }
 
 .calculator.slide-animation {
-  animation: slideOutIn 6s linear infinite;
+  animation: slideOutIn var(--slide-duration, 4s) linear 1s infinite;
 }
 
 @keyframes slideOutIn {
